@@ -8,7 +8,6 @@ CORS(app)
 @app.route('/probability')
 def probability_of_one():
     prob = get_probability_of_one()
-    #return {'movie':'Amethyst'}
     return {'probability':str(prob)}
 
 if __name__ == "__main__":
