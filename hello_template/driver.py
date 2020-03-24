@@ -1,6 +1,6 @@
 import qsharp
 
-from Something import HelloQ
+from Something import HelloQ, ApplyGate
 
 def get_probability_of_one():
     count = 0
@@ -14,3 +14,7 @@ def get_probability_of_one():
             print('.')
     print('Probability of 1s: '+ str(count/1000))
     return str(count/1000)
+
+def get_result(start, gate_name):
+    result = ApplyGate.simulate(start_state=start, gate=gate_name)
+    return result
