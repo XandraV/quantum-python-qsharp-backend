@@ -1,12 +1,13 @@
 import qsharp
-
+import math
+import re
 from Something import ApplyGate
 
-def get_result(start, gate_names):
+def get_result(start, gate_names, phase_angle):
     print(start)
-    print(list(gate_names))
+    print(re.findall('[A-Z][^A-Z]*', gate_names))
     result = start
     for gate in list(gate_names):
-        result = ApplyGate.simulate(start_state=result, gate=gate)
+        result = ApplyGate.simulate(start_state=result, gate=gate, angle=math.radians(int(phase_angle)))
     print(result)
     return result

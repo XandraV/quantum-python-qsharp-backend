@@ -5,9 +5,9 @@ app = Flask(__name__)
 
 CORS(app)
 @app.route('/')
-@app.route('/result/<state>/<gate>')
-def probability_of_one(state, gate):
-    res = get_result(state, gate)
+@app.route('/result/<state>/<gate>/<angle>')
+def probability_of_one(state, gate, angle):    
+    res = get_result(state, gate, angle)
     return {'probability':str(res)}
 
 if __name__ == "__main__":

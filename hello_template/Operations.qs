@@ -5,7 +5,7 @@ namespace Something {
     open Microsoft.Quantum.Math;
     open Microsoft.Quantum.Diagnostics;
 
-    operation ApplyGate (start_state: Int, gate: String) : Result { 
+    operation ApplyGate (start_state: Int, gate: String, angle: Double) : Result { 
         // This line allocates a qubit in state |0⟩
         using (q = Qubit()) {
             if (start_state==1) {
@@ -20,6 +20,19 @@ namespace Something {
                 Z(q);
             } elif (gate == "H") {
                 H(q);
+            }
+             elif (gate == "S") {
+                S(q);
+            } elif ( gate == "Rx" ){
+                Rx(angle, q);
+            } elif ( gate == "Ry" ){
+                Ry(angle, q);
+            } elif ( gate == "Rz" ){
+                Rz(angle, q);
+            } elif ( gate == "T" ){
+                T(q);
+            } elif ( gate == "S" ){
+                S(q);
             } elif (gate == "noGate") {
                 //
             }
