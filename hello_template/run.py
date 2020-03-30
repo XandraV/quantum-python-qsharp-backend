@@ -1,14 +1,16 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from driver import get_result
 app = Flask(__name__)
 
 CORS(app)
-@app.route('/')
-@app.route('/result/<state>/<gate>/<angle>')
-def probability_of_one(state, gate, angle):    
-    res = get_result(state, gate, angle)
-    return {'probability':str(res)}
+
+@app.route('/result', methods=["GET", "POST"])
+def get_result_single_qubit():    
+    req = request.get_json(force=True)
+    res = get_result(req['state'], req['gates'], req['angle'])
+    return {'finalResult': str(res)}
+
 
 if __name__ == "__main__":
     
