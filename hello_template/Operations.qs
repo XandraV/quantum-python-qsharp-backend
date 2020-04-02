@@ -4,14 +4,10 @@ namespace Something {
     open Microsoft.Quantum.Canon;
     open Microsoft.Quantum.Math;
     open Microsoft.Quantum.Diagnostics;
+    open Microsoft.Quantum.Arrays;
 
-    operation ApplyGate (start_state: Int, gate: String, angle: Double) : Result { 
+    operation ApplyGate (q: Qubit, gate: String, angle: Double) : Unit { 
         // This line allocates a qubit in state |0⟩
-        using (q = Qubit()) {
-            if (start_state==1) {
-                // changes the qubit from state |0⟩ to state |1⟩
-                X(q);
-            }
             if (gate == "X") {
                 X(q);
             } elif (gate == "Y") {
@@ -33,15 +29,31 @@ namespace Something {
                 T(q);
             } elif ( gate == "S" ){
                 S(q);
-            } elif (gate == "noGate") {
+            } elif (gate == "I") {
                 //
             }
-            
-            let res = M(q);
-        
-            // This line returns the qubit to state |0⟩
-            Reset(q);
-            return res;
+    }
+    
+    operation CalculateCircuit (qubitNum: Int, gatesMatrix: String[][]) : Result[] {
+        mutable res_array = new Result[0]; 
+        using (qs = Qubit[qubitNum]) {  
+           for (i in 0 .. Length(gatesMatrix[0]) - 1) {               
+                for (j in 0 .. Length(gatesMatrix) - 1) {
+                    if (gatesMatrix[j][i] == "CNOTc") {
+                        CNOT(qs[j], qs[j+1]);
+                        Message("Made it to CNOTc");
+                    } elif (gatesMatrix[j][i] == "CNOTt") {
+                        Message("CNOTt not doing anything");
+                    } else {                                     
+                         ApplyGate(qs[j], gatesMatrix[j][i], 1.5);
+                    }
+                }
+            }           
+            for (q in qs) {
+                set res_array += [M(q)];
+            }
+            ResetAll(qs);
+            return res_array;
         }
     }
 }

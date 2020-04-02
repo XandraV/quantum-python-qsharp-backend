@@ -1,16 +1,15 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from driver import get_result
+from driver import get_circuit_result
 app = Flask(__name__)
 
 CORS(app)
 
-@app.route('/result', methods=["GET", "POST"])
-def get_result_single_qubit():    
+@app.route('/circuit-result', methods=["GET", "POST"])
+def get_result_multi_qubit():
     req = request.get_json(force=True)
-    res = get_result(req['state'], req['gates'], req['angle'])
+    res = get_circuit_result(int(req['qubitNum']), req['gates'])
     return {'finalResult': str(res)}
-
 
 if __name__ == "__main__":
     
