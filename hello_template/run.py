@@ -9,7 +9,7 @@ CORS(app)
 def get_result_multi_qubit():
     req = request.get_json(force=True)
     res = get_circuit_result(int(req['qubitNum']), req['gates'])
-    return {'finalResult': str(res)}
+    return {'finalResult': res}
 
 if __name__ == "__main__":
     
