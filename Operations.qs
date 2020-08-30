@@ -45,7 +45,7 @@ namespace Something {
                     } elif (gatesMatrix[j][i] == "CNOTt") {
                         Message("CNOTt not doing anything");
                     } else {                                     
-                         ApplyGate(qs[j], gatesMatrix[j][i], 1.5);
+                         ApplyGate(qs[j], gatesMatrix[j][i], 0.0);
                     }
                 }
             }           
