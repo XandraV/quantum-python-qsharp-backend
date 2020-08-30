@@ -1,4 +1,5 @@
-
+__pycache__/
+.vscode/
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
