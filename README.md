@@ -1,6 +1,11 @@
-# Quantum Circuit Simulator
+![contributors](https://img.shields.io/github/contributors/XandraV/quantum-python-backend?color=gold)
+![commit](https://img.shields.io/github/last-commit/XandraV/quantum-python-backend?color=cyan)
 
-*This is only the backend code for the Quantum Circuit Simulator project.*
+# Quantum Circuit Simulator
+![python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![microsoft](https://img.shields.io/badge/-Microsoft-666666?style=flat-square&logo=Microsoft&logoColor=white)
+
+*This is the backend code for the Quantum Circuit Simulator project.*
 
 A web application that allows the user to graphically build quantum circuits and view the results on a dashboard. This project combines **React(JavaScript)** frontend with a **Flask(Python)** backend that is the host program to call **Q#** functions to perform quantum operations.
 
@@ -22,3 +27,4 @@ Clone the master branch and then run
 | Description                                                        | Link                                                                      |
 | :----------------------------------------------------------------- | :------------------------------------------------------------------------ |
 | Flask web application framework             | [Flask](https://flask.palletsprojects.com/en/1.1.x/) |
+|Microsoft Q# - a language for quantum programming|[Microsoft Quantum](https://docs.microsoft.com/en-us/quantum/)
