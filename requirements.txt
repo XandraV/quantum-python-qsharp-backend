@@ -14,5 +14,4 @@ qsharp-chemistry==0.13.2011.1004
 qsharp-core==0.13.2011.1004
 six==1.15.0
 tornado==6.1
-traitlets==5.0.5
 Werkzeug==1.0.1
