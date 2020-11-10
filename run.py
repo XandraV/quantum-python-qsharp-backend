@@ -8,6 +8,7 @@ CORS(app)
 @app.route('/circuit-result', methods=["GET", "POST"])
 def get_result_multi_qubit():
     req = request.get_json(force=True)
+    print(req)
     res = get_circuit_result(int(req['qubitNum']), req['gates'])
     return {'finalResult': res}
 
